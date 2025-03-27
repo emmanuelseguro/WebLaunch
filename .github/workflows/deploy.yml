@@ -1,0 +1,30 @@
+name: Deploy WebLaunch
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  validate-html:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout código
+        uses: actions/checkout@v2
+      - name: Validar HTML
+        uses: chrisdholt/html5-validator-action@v1.0.0
+        with:
+          file: ./index.html
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: validate-html
+    steps:
+      - name: Checkout código
+        uses: actions/checkout@v2
+      - name: Configurar GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          publish_dir: ./
+
+
