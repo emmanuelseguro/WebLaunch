@@ -9,6 +9,12 @@ body {
     background-color: #f4f4f4;
     color: #333;
     text-align: center;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+body.dark-mode {
+    background-color: #121212;
+    color: #eee;
 }
 
 /* Encabezado */
@@ -23,6 +29,20 @@ header h1 {
     margin: 0;
     font-size: 3em;
     font-weight: 600;
+}
+
+/* Botón Dark Mode */
+#darkModeToggle {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 10px 15px;
+    background: #007bff;
+    color: white;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
 }
 
 /* Navegación */
@@ -51,6 +71,35 @@ nav ul li a {
 
 nav ul li a:hover {
     color: #00d4ff;
+}
+
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 1.8em;
+    color: white;
+}
+
+.nav-menu.active {
+    display: block;
+}
+
+@media (max-width: 768px) {
+    nav ul {
+        display: none;
+        flex-direction: column;
+        background: #222;
+    }
+
+    nav ul li {
+        display: block;
+        margin: 10px 0;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
 }
 
 /* Secciones */
@@ -84,8 +133,66 @@ h2 {
     font-weight: 400;
 }
 
+body.dark-mode .feature {
+    background: #333;
+    color: #eee;
+}
+
 .feature:hover {
     transform: scale(1.05);
+}
+
+/* Animaciones Scroll */
+.fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Formulario */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+form input, form button {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+form button {
+    background: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+form button:hover {
+    background: #0056b3;
+}
+
+/* Botón Scroll Up */
+#scrollTop {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    padding: 10px 15px;
+    background: #00d4ff;
+    color: #222;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: none;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
 }
 
 /* Pie de página */
@@ -96,4 +203,5 @@ footer {
     margin-top: 30px;
     font-weight: 300;
 }
+
 
