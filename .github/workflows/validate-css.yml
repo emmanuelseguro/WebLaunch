@@ -1,0 +1,29 @@
+name: Validate CSS
+
+on: 
+  push:
+    paths:
+      - '**.css'
+  pull_request:
+    paths:
+      - '**.css'
+
+jobs:
+  lint-css:
+    name: Run CSS Linter
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install Stylelint
+        run: npm install -g stylelint stylelint-config-standard
+
+      - name: Run Stylelint
+        run: stylelint "**/*.css" --allow-empty-input || true
